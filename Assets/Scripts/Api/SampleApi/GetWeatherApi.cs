@@ -7,9 +7,7 @@ namespace Api
     /// </summary>
     public class GetWeatherApi : BaseApi
     {
-        /// <summary>
         /// リクエストパラメータ
-        /// </summary>
         [Serializable]
         public struct Request
         {
@@ -17,9 +15,7 @@ namespace Api
         }
         public Request request;
 
-        /// <summary>
-        /// レスポンスパラメータ
-        /// </summary>
+        /// レスポンスデータ
         [Serializable]
         public struct Response
         {
@@ -37,6 +33,7 @@ namespace Api
             public string text;
         }
 
+        // コンストラクタ
         public GetWeatherApi(int city)
         {
             BaseUrl = "https://weather.tsukumijima.net/api";

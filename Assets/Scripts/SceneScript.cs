@@ -8,35 +8,35 @@ public class SceneScript : MonoBehaviour
         // 天気予報 API（livedoor 天気互換）(https://weather.tsukumijima.net/) をコールします
         // 特に問題がなければリクエストに成功するはずです
         int cityId = 400040; // 福岡県久留米の地域ID
-        Api.GetWeatherApi api1 = new Api.GetWeatherApi(cityId);
-        api1.Get<Api.GetWeatherApi.Request>(ref api1.request, result =>
+        Api.GetWeatherApi getApi = new Api.GetWeatherApi(cityId);
+        getApi.Get<Api.GetWeatherApi.Request>(ref getApi.request, result =>
         {
             if (result.isSuccess)
             {
-                api1.response = api1.Response<Api.GetWeatherApi.Response>();
-
+                // リクエストに成功した場合
+                getApi.response = getApi.Response<Api.GetWeatherApi.Response>();
                 Debug.Log("天気予報APIのリクエストに成功しました");
-                Debug.Log(api1.response.publicTimeFormatted);
-                Debug.Log(api1.response.description.text);
+                Debug.Log(getApi.response.publicTimeFormatted);
+                Debug.Log(getApi.response.description.text);
             }
             else
             {
+                // リクエストに失敗した場合
                 Debug.Log("天気予報APIリクエストに失敗しました");
                 Debug.Log(result.error);
             }
         });
 
-
         // POSTリクエストのサンプル
         // PostSampleApi をコールします
         // 存在しないURLなので失敗します
         string param1 = "test";
-        Api.PostSampleApi api2 = new Api.PostSampleApi(param1);
-        api2.Post<Api.PostSampleApi.Request>(ref api2.request, result =>
+        Api.PostSampleApi postApi = new Api.PostSampleApi(param1);
+        postApi.Post<Api.PostSampleApi.Request>(ref postApi.request, result =>
         {
             if (result.isSuccess)
             {
-                api1.response = api1.Response<Api.GetWeatherApi.Response>();
+                getApi.response = getApi.Response<Api.GetWeatherApi.Response>();
 
                 Debug.Log("PostSampleApiのリクエストに成功しました");
             }

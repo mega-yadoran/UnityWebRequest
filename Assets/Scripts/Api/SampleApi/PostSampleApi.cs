@@ -8,9 +8,7 @@ namespace Api
     /// </summary>
     public class PostSampleApi : BaseApi
     {
-        /// <summary>
         /// リクエストパラメータ
-        /// </summary>
         [Serializable]
         public struct Request
         {
@@ -18,17 +16,15 @@ namespace Api
         }
         public Request request;
 
-        /// <summary>
-        /// レスポンスパラメータ
-        /// </summary>
+        /// レスポンスデータ
         [Serializable]
         public struct Response
         {
             public int res1;
         }
-
         public Response response;
 
+        // コンストラクタ
         public PostSampleApi(string param1)
         {
             BaseUrl = "http://post-sample.example.com";
